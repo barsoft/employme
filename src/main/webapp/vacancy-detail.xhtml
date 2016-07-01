@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jstl="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>#{v.name}</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/commonLayout.xhtml">
+		<ui:define name="content">
+			<br />
+			<h:form styleClass="vacancy-detail">
+				<jstl:set var="v" value="#{vacancyBean}" scope="request" />
+				<jstl:set var="role" value="#{sessionBean.userRole}" scope="request" />
+				<jstl:set var="f" value="#{vacancyBean.favorites}" scope="request" />
+				<ui:fragment rendered="#{v.containingList ne 'favorites' }">
+					<h:commandLink styleClass="btn btn-default   " type="submit"
+						action="vacancies?faces-redirect=true">
+						<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>  Back to vacancies
+					</h:commandLink>
+				</ui:fragment>
+				<ui:fragment rendered="#{v.containingList eq 'favorites'  }">
+					<h:commandLink styleClass="btn btn-default   " type="submit"
+						action="favorites?faces-redirect=true">
+						<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>  Back to favorites
+					</h:commandLink>
+				</ui:fragment>
+				<br />
+				<h2>#{v.name}</h2>
+				<br />
+				<ui:fragment rendered="#{ v.place  ne ''}">
+
+					<div class="place warn-bg">
+						<strong> Place: #{ v.place }</strong>
+					</div>
+				</ui:fragment>
+				<ui:fragment rendered="#{v.salary>0}">
+					<div class="salary warn-bg">
+						<strong> Salary: #{ v.salary }</strong>
+					</div>
+				</ui:fragment>
+				<ui:fragment rendered="#{v.age_min>0 or v.age_max>0}">
+					<div class="age warn-bg">
+						<strong>#{v.age_min>0 ? 'Min age: ':''}#{v.age_min>0 ?
+							v.age_min :''}</strong> <strong>#{v.age_max>0 ? 'Max age:
+							':''}#{v.age_max>0 ?v.age_max :''}</strong>
+					</div>
+				</ui:fragment>
+				<ui:fragment rendered="#{v.experience_min>0}">
+					<div class="experience warn-bg">
+						<strong> Min experience: #{ v.experience_min }</strong>
+					</div>
+				</ui:fragment>
+				<ui:fragment rendered="#{v.date!=null}">
+					<div class="date">
+						<strong>#{ v.date }</strong>
+					</div>
+				</ui:fragment>
+				<p>#{v.description }</p>
+ 
+				<ui:fragment rendered="#{v.containingList ne 'favorites' and not v.inFavorites}">
+
+					<h:commandLink styleClass="btn btn-default btn-primary">
+						<f:ajax render="@form" listener="#{v.addToFavorites}" />
+						<f:param name="vacancy_id" value="#{v.vacancy_id}" />
+						<span class="glyphicon glyphicon-pushpin glyphicon-add"></span>Add to favorites </h:commandLink>
+				</ui:fragment>
+
+				<ui:fragment rendered="#{v.containingList ne 'favorites' and v.inFavorites}">
+					<h:commandLink styleClass="btn btn-default btn-success "
+						type="submit" action="favorites?faces-redirect=true">
+						<span
+							class="glyphicon glyphicon-share-alt glyphicon-show-in-favorites"></span>Show in favorites </h:commandLink>
+				</ui:fragment>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

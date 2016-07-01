@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<h:head>
+	<title>Register</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/commonLayout.xhtml">
+		<ui:define name="content">
+			<h:form id="register-form" class="form-horizontal">
+				<h1>Register</h1>
+				<div class="form-group">
+					<div class="col-xs-12 ">
+						<h:outputText value="Username" />
+						<h:inputText id="username" value="#{registrationBean.username}"
+							class="form-control"></h:inputText>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-12 ">
+						<h:outputText value="Password" />
+						<h:inputSecret id="password" value="#{registrationBean.password}"
+							class="form-control"></h:inputSecret>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<div class="col-xs-12 ">
+						<h:outputText value="Re-enter password" />
+						<h:inputSecret id="repassword"
+							value="#{registrationBean.repassword}" class="form-control"></h:inputSecret>
+					</div>
+				</div>
+ 
+				<div class="form-group">
+					<div class="col-xs-12 ">
+						<div class="btn-group reg-usertype-radio">
+							<label class="radio-inline"><input type="radio"
+								name="employee" value="employee" checked="checked" />Empoloyee</label> <label
+								class="radio-inline"> <input type="radio"
+								name="employee" value="employer" />Empoloyer
+							</label>
+						</div>
+					</div>
+				</div>
+				<div id="employee-reg-block">
+					<ui:include src="templates/employeeProfileForm.xhtml">
+						<ui:param name="e" value="#{employeeBean}" />
+					</ui:include>
+					<div class="form-group">
+						<div class="col-xs-12 ">
+							<h:commandButton action="#{registrationBean.registerEmployee}"
+								value="Register" class="btn btn-default btn-primary"></h:commandButton>
+						</div>
+					</div>
+				</div>
+				<div id="employer-reg-block">
+					<ui:include src="templates/employerProfileForm.xhtml">
+						<ui:param name="e" value="#{employerBean}" />
+					</ui:include>
+					<div class="form-group">
+						<div class="col-xs-12 ">
+							<h:commandButton action="#{registrationBean.registerEmployer}"
+								value="Register" class="btn btn-default btn-primary"></h:commandButton>
+						</div>
+					</div>
+				</div>
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

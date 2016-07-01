@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:jstl="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Vacancies</title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/commonLayout.xhtml">
+		<ui:define name="content">
+			<h1>My vacancies</h1>
+
+			<jstl:set var="role" value="#{sessionBean.userRole}" scope="request" />
+
+			<h:form styleClass="my-vacancies">
+				<h:commandLink styleClass="btn btn-default   " type="submit"
+					action="add-vacancy?faces-redirect=true">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Add vacancy
+				</h:commandLink>
+			</h:form>
+			<br/>
+
+
+			<jstl:set var="vac" value="#{vacancyBean.myVacancies}"
+				scope="request" />
+
+			<ui:fragment rendered="#{ empty vac }">There is no available vacancy yet...</ui:fragment>
+			<ul class="vacancy-list">
+				<ui:repeat value="#{vac}" var="v">
+					<ui:include src="templates/vacancyLoop.xhtml">
+						<ui:param name="v" value="#{v}" />
+						<ui:param name="list" value="vacancies" />
+						<ui:param name="myvacancies" value="1" />
+					</ui:include>
+				</ui:repeat>
+			</ul>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

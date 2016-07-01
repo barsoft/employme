@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jstl="http://java.sun.com/jsp/jstl/core">
+	<li><h:form styleClass="vacancy-loop">
+			<h2>#{v.name}</h2>
+			<br />
+			<ui:fragment rendered="#{ v.place  ne ''}">
+
+				<div class="place warn-bg">
+					<strong> Place: #{ v.place }</strong>
+				</div>
+			</ui:fragment>
+			<ui:fragment rendered="#{v.salary>0}">
+				<div class="salary warn-bg">
+					<strong> Salary: #{ v.salary }</strong>
+				</div>
+			</ui:fragment>
+			<ui:fragment rendered="#{v.age_min>0 or v.age_max>0}">
+				<div class="age warn-bg">
+					<strong>#{v.age_min>0 ? 'Min age: ':''}#{v.age_min>0 ?
+						v.age_min :''}</strong> <strong>#{v.age_max>0 ? 'Max age:
+						':''}#{v.age_max>0 ? v.age_max :''}</strong>
+				</div>
+			</ui:fragment>
+			<ui:fragment rendered="#{v.experience_min>0}">
+				<div class="experience warn-bg">
+					<strong> Min experience: #{ v.experience_min }</strong>
+				</div>
+			</ui:fragment>
+			<ui:fragment rendered="#{v.date!=null}">
+				<div class="date">
+					<strong>#{ v.date }</strong>
+				</div>
+			</ui:fragment>
+			<p>#{v.descriptionShort}</p>
+
+			<h:commandLink styleClass="btn btn-default btn-primary btn-readmore col-tn-12" type="submit"
+				action="#{vacancyBean.goToVacancy}">
+				<f:param name="vacancy_id" value="#{v.vacancy_id}" />
+				<f:param name="list" value="#{list}" />
+				<span class="glyphicon glyphicon-list-alt glyphicon-detail"></span>Read
+				more
+	        </h:commandLink>
+ 
+			<ui:fragment rendered="#{myvacancies eq '1'}">
+				<h:commandLink styleClass="btn btn-default btn-primary  col-tn-12" type="submit"
+				action="#{vacancyBean.goToVacancy}">
+					<f:param name="vacancy_id" value="#{v.vacancy_id}" />
+					<f:param name="list" value="#{list}" />
+					<span class="glyphicon glyphicon-edit glyphicon-detail"></span>Edit
+	        	</h:commandLink>
+			</ui:fragment>
+				
+			<jstl:if test="#{role eq 'ROLE_EMPLOYEE'}">
+				<ui:fragment rendered="#{list ne 'favorites' and not v.inFavorites}">
+					<h:commandLink styleClass="btn btn-default btn-primary col-tn-12">
+						<f:ajax render="@form" listener="#{vacancyBean.addToFavorites}" />
+						<f:param name="vacancy_id" value="#{v.vacancy_id}" />
+						<span class="glyphicon glyphicon-pushpin glyphicon-add"></span>Add to favorites </h:commandLink>
+				</ui:fragment>
+
+				<ui:fragment rendered="#{list ne 'favorites' and v.inFavorites}">
+					<h:commandLink styleClass="btn btn-default btn-success col-tn-12"
+						type="submit" action="favorites?faces-redirect=true">
+						<span
+							class="glyphicon glyphicon-share-alt glyphicon-show-in-favorites"></span>Show in favorites </h:commandLink>
+				</ui:fragment>
+
+				<ui:fragment rendered="#{list eq 'favorites'}">
+					<h:commandLink styleClass="btn btn-default btn-warn col-tn-12">
+						<f:ajax render=":main-container"
+							listener="#{vacancyBean.removeFromFavorites}" />
+						<f:param name="vacancy_id" value="#{v.vacancy_id}" />
+						<span class="glyphicon glyphicon-remove glyphicon-delete"></span>Remove from favorites </h:commandLink>
+				</ui:fragment>
+				
+			</jstl:if>
+
+		</h:form></li>
+</ui:composition>

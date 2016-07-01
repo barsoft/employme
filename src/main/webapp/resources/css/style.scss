@@ -1,0 +1,249 @@
+//$theme-color:  #0069d6 ;  
+$theme-color:  transparent ;  
+
+/// Slightly tint a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+	@return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+	@return mix(black, $color, $percentage);
+}
+
+@function opaque($color, $percentage) {
+	@return mix(white, $color, $percentage);
+}
+
+* {
+	font-size:16px;
+}
+
+html, body {
+    margin: 0;
+    height: 100%; 
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+
+body {
+	background-color:tint($theme-color,50%);
+}
+
+.container { 
+	background-color:tint($theme-color,73%);
+}
+
+.alert {
+	width:100%;  
+	margin-bottom:3px;
+	display:inline-block; 
+}
+
+.alert-ul { 
+    padding:0px;
+    margin-top: 20px;
+} 
+
+
+.btn-radio-group td{
+	display:inline-block;
+	margin-right:10px;
+}
+
+.btn-radio-group input[type=radio]{
+	display:inline-block;
+	margin-right:10px;
+}
+.navbar {
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+#login-header-form{ 
+	background-color: tint($theme-color,90%); 
+    height: 101px; 
+    margin-top: 19px;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+} 
+#logo{
+	width:100%;
+} 
+ 
+#header-mobile{
+	background:none;
+}
+
+#header-mobile .navbar-toggle{
+	background-color: tint($theme-color,90%);
+}
+#navbar-form .navbar{
+	min-height: 0px;
+	border:none;
+}
+
+#slideshow {
+	margin-top:15px;
+	margin-bottom: 15px;
+}
+#slideshow img{ 
+	//height:188px;
+	width:100%;
+} 
+ 
+#slideshow .owl-wrapper-outer{ 
+	position:relative;
+}
+#slideshow  .owl-controls { 
+    position: absolute;
+    top: 7px;
+    left: 11px;
+}
+.vacancy-list{
+	list-style-type: none;
+	padding-left: 0px;
+}
+.glyphicon-detail,
+.glyphicon-add,
+.glyphicon-delete,
+.glyphicon-show-in-favorites{
+	margin-right:10px;
+}
+.vacancy-loop,
+.vacancy-detail{
+	background-color:  mix(red,tint($theme-color,30%),10%);
+	padding:10px;
+	margin-bottom:10px;
+	position:relative;
+	display:inline-block;
+	width:100%;
+}
+.add-vacancy{
+	background-color:  mix(green,tint($theme-color,30%),10%);
+	padding:10px;
+	margin-bottom:10px;
+	position:relative;
+	display:inline-block;
+	width:100%;
+}
+.vacancy-loop h2,
+.vacancy-detail h2{
+	display:inline-block;
+}
+.age,
+.experience,
+.salary, 
+.place{
+	background-color:  mix(red,tint($theme-color,30%),40%);  
+    padding: 10px; 
+    //float: right;
+    margin-right:10px;
+    margin-bottom:10px;
+    display:inline-block;
+    border-radius: 5px;
+}
+
+.date strong{
+	font-size:12px;
+}
+
+.warn-bg{
+	background-color:  mix(red,tint($theme-color,30%),40%);
+}
+.date{
+	position:absolute;
+	right:10px;
+	top:10px;
+	margin-right:0px;
+} 
+.btn .glyphicon-backward{
+	position: relative;
+	top: 3px;
+	left: -3px; 
+}
+
+label{
+	display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+#search-form input[type=text]{
+	width: calc(100% - 55px);
+	display:inline-block;
+}
+ 
+#search-form .btn{
+	width:100%;
+	margin-top: 20px ; 
+	display:block ;
+}
+
+#search-form .btn.btn-search{
+	width:50px;
+	display:inline-block;
+}
+
+
+.vacancy-loop .btn{
+	margin-left:10px;
+}
+
+.vacancy-loop .btn-readmore{
+	margin-left:0px;
+}
+
+.datepicker {
+    padding: 10px;
+}
+
+#search-form .btn.btn-search{
+	margin-top: 0px;
+}
+
+.btn-add-vacancy{
+	margin-top:20px;
+}
+	
+@media  (min-width: 768px) {
+    #navbar-form .navbar #navbar{
+        padding-left:0px;
+        padding-right:0px;
+    }
+     
+	#search-form .btn{
+		margin-top:40px;
+	}
+	
+}
+@media  (max-width: 768px) {
+    #logo{
+        width:225px;
+    }
+    
+}
+@media  (max-width: 500px) { 
+	.col-tn-12 { 
+		width:100%;
+	}
+	
+	.vacancy-loop .btn{
+		margin-left:0px;
+		margin-bottom:10px;
+	}
+} 
