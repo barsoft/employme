@@ -12,7 +12,6 @@
 		<ui:define name="content">
 			<h1>My vacancies</h1>
 
-			<jstl:set var="role" value="#{sessionBean.userRole}" scope="request" />
 
 			<h:form styleClass="my-vacancies">
 				<h:commandLink styleClass="btn btn-default   " type="submit"
@@ -23,12 +22,9 @@
 			<br/>
 
 
-			<jstl:set var="vac" value="#{vacancyBean.myVacancies}"
-				scope="request" />
-
-			<ui:fragment rendered="#{ empty vac }">There is no available vacancy yet...</ui:fragment>
+			<ui:fragment rendered="#{ empty vacancyBean.myVacancies }">There is no available vacancy yet...</ui:fragment>
 			<ul class="vacancy-list">
-				<ui:repeat value="#{vac}" var="v">
+				<ui:repeat value="#{vacancyBean.myVacancies}" var="v">
 					<ui:include src="templates/vacancyLoop.xhtml">
 						<ui:param name="v" value="#{v}" />
 						<ui:param name="list" value="vacancies" />

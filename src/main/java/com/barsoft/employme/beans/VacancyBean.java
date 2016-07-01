@@ -222,6 +222,29 @@ public class VacancyBean implements Serializable {
 		return "vacancy-detail?faces-redirect=true";
 	}
 
+	public String goToEditVacancy() {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+		VacancyBean v = VacanciesDao.getVacancy(Integer.parseInt(params.get("vacancy_id")));
+		String list = params.get("list");
+		this.setVacancy_id(v.getVacancy_id());
+		this.setEmployer_id(v.getEmployer_id());
+		this.setName(v.getName());
+		this.setDescription(v.getDescription());
+		this.setEducation(v.getEducation());
+		this.setArea(v.getArea());
+		this.setLanguages(v.getLanguages());
+		this.setAge_min(v.getAge_min());
+		this.setAge_max(v.getAge_max());
+		this.setExperience_min(v.getExperience_min());
+		this.setSalary(v.getSalary());
+		this.setPlace(v.getPlace());
+		this.setDate(v.getDate());
+		this.setContainingList(list);
+
+		return "edit-vacancy?faces-redirect=true";
+	}
+
 	public String getContainingList() {
 		return containingList;
 	}
@@ -248,6 +271,19 @@ public class VacancyBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_ERROR, "All fields are required!", ""));
 			return "add-vacancy";
+		}
+	}
+
+	public String editVacancy(){
+
+		if (VacanciesDao.editVacancy()){
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Vacancy was edited!", ""));
+			return "edit-vacancy";
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "All fields are required!", ""));
+			return "edit-vacancy";
 		}
 	}
 }

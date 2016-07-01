@@ -1,105 +1,110 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-				xmlns:h="http://java.sun.com/jsf/html"
-				xmlns:ui="http://java.sun.com/jsf/facelets"
-				xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
 >
-	<ui:fragment rendered="#{searchBean.extended_search_available}">
-		<div id="extended-search-form" class="form-group">
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Age" /></label>
-				<h:inputText value="#{searchBean.age}" class="form-control"></h:inputText>
-			</div>
+    <ui:fragment rendered="#{searchBean.extended_search_available}">
+        <div id="extended-search-form" class="form-group">
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Age"/></label>
+                <h:inputText value="#{searchBean.age}" class="form-control"></h:inputText>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText
-						value="Years of experience" /></label>
-				<h:inputText value="#{searchBean.years_of_experience}"
-					class="form-control"></h:inputText>
-			</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText
+                        value="Years of experience"/></label>
+                <h:inputText value="#{searchBean.years_of_experience}"
+                             class="form-control"></h:inputText>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Education" /></label>
-				<h:inputText value="#{searchBean.education}" class="form-control"></h:inputText>
-			</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Education"/></label>
+                <h:inputText value="#{searchBean.education}" class="form-control"></h:inputText>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Area" /></label>
-				<h:inputText value="#{searchBean.area}" class="form-control"></h:inputText>
-			</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Area"/></label>
+                <h:inputText value="#{searchBean.area}" class="form-control"></h:inputText>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Languages" /></label>
-				<h:inputText value="#{searchBean.languages}" class="form-control"></h:inputText>
-			</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Languages"/></label>
+                <h:inputText value="#{searchBean.languages}" class="form-control"></h:inputText>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Place" /></label>
-				<h:inputText value="#{searchBean.place}" class="form-control"></h:inputText>
-			</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Place"/></label>
+                <h:inputText value="#{searchBean.place}" class="form-control"></h:inputText>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Salary" /></label>
-				<div class="row">
-					<div class="col-xs-6 col-sm-6 ">
-						<h:inputText value="#{searchBean.salary_min}" class="form-control"></h:inputText>
-					</div>
-					<div class="col-xs-6 col-sm-6 ">
-						<h:inputText value="#{searchBean.salary_max}" class="form-control"></h:inputText>
-					</div>
-				</div>
-			</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Salary"/></label>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 ">
+                        <h:inputText value="#{searchBean.salary_min}" class="form-control"></h:inputText>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 ">
+                        <h:inputText value="#{searchBean.salary_max}" class="form-control"></h:inputText>
+                    </div>
+                </div>
+            </div>
 
-			<div class="col-xs-12 col-sm-6 ">
-				<label class="control-label"><h:outputText value="Date" /></label>
-				<div class="row">
-					<div class="col-xs-6 col-sm-6 ">
-						<h:inputText value="#{searchBean.date_from}"
-							class="form-control datepicker">
-							<f:convertDateTime pattern="dd.mm.yyyy" />
-						</h:inputText>
-					</div>
-					<div class="col-xs-6 col-sm-6 ">
-						<h:inputText value="#{searchBean.date_to}"
-							class="form-control datepicker">
-							<f:convertDateTime pattern="dd.mm.yyyy" />
-						</h:inputText>
-					</div>
-				</div>
-			</div>
-		</div>
+            <div class="col-xs-12 col-sm-6 ">
+                <label class="control-label"><h:outputText value="Date"/></label>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 ">
+                        <h:inputText value="#{searchBean.date_from}"
+                                     class="form-control datepicker">
+                            <f:convertDateTime pattern="dd.mm.yyyy"/>
+                        </h:inputText>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 ">
+                        <h:inputText value="#{searchBean.date_to}"
+                                     class="form-control datepicker">
+                            <f:convertDateTime pattern="dd.mm.yyyy"/>
+                        </h:inputText>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</ui:fragment>
-	<div id="search-form" class="form-group">
+    </ui:fragment>
+    <div id="search-form" class="form-group">
 
-		<div class="col-xs-12 col-sm-12 col-lg-6">
-			<label class="control-label"><h:outputText value="Text" /></label><br />
-			<h:inputText value="#{searchBean.text}" class="form-control"></h:inputText>
+        <div class="col-xs-12 col-sm-12 col-lg-6">
+            <label class="control-label"><h:outputText value="Text"/></label><br/>
+            <h:inputText value="#{searchBean.text}" class="form-control"></h:inputText>
 
-			<button class="btn btn-default btn-search" type="submit">
-				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			</button>
-		</div>
-		<ui:fragment rendered="#{searchBean.extended_search_available}">
-			<div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
-				<a id="btn-use-profile-data" class="btn btn-default btn-success">Use
-					profile data</a>
-			</div>
+            <button class="btn btn-default btn-search" type="submit">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+        </div>
+        <ui:fragment rendered="#{searchBean.extended_search_available}">
+            <ui:fragment rendered="#{role eq 'ROLE_EMPLOYEE'}">
+                <div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
+                    <a id="btn-use-profile-data" class="btn btn-default btn-success">Use
+                        profile data</a>
+                </div>
+            </ui:fragment>
 
-			<div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
-				<a id="btn-close" class="btn btn-default btn-danger">Clear</a>
-			</div>
-			<div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
-				<h:commandButton action="#{searchBean.disableExtendedSearch}" class="btn btn-default btn-primary" value="Close"></h:commandButton>
-			</div>
-		</ui:fragment>
-		<ui:fragment rendered="#{not searchBean.extended_search_available}">
-			<div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2"> 
-				<h:commandButton action="#{searchBean.clearText}" class="btn btn-default btn-danger" value="Clear"></h:commandButton>
-			</div>
-			<div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
-				<h:commandButton action="#{searchBean.enableExtendedSearch}" class="btn btn-default btn-primary" value="Extended search"></h:commandButton>
-			</div>
-		</ui:fragment>
-	</div>
+            <div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
+                <a id="btn-close" class="btn btn-default btn-danger">Clear</a>
+            </div>
+            <div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
+                <h:commandButton action="#{searchBean.disableExtendedSearch}" class="btn btn-default btn-primary"
+                                 value="Close"></h:commandButton>
+            </div>
+        </ui:fragment>
+        <ui:fragment rendered="#{not searchBean.extended_search_available}">
+            <div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
+                <h:commandButton action="#{searchBean.clearText}" class="btn btn-default btn-danger"
+                                 value="Clear"></h:commandButton>
+            </div>
+            <div class="col-tn-12 col-xs-4 col-sm-4 col-lg-2">
+                <h:commandButton action="#{searchBean.enableExtendedSearch}" class="btn btn-default btn-primary"
+                                 value="Extended search"></h:commandButton>
+            </div>
+        </ui:fragment>
+    </div>
 
 </ui:composition>

@@ -1,100 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:jstl="http://java.sun.com/jsp/jstl/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jstl="http://java.sun.com/jsp/jstl/core">
 
 <h:head>
-	<title>#{v.name}</title>
+    <title>#{v.name}</title>
 </h:head>
 <h:body>
-	<ui:composition template="/templates/commonLayout.xhtml">
-		<ui:define name="content">
-		
-			<br />
-			<h:form styleClass="add-vacancy">
-				<jstl:set var="v" value="#{vacancyBean}" scope="request" />
-				<jstl:set var="role" value="#{sessionBean.userRole}" scope="request" />
-				<jstl:set var="f" value="#{vacancyBean.favorites}" scope="request" />
-				
-				
-				<h1>Add vacancy</h1>
-			
-				<div class="form-group row">
-					<div class="col-xs-12 col-sm-12 ">
-						<label class="control-label"><h:outputText value="Name" /></label>
-						<div class="row">
-							<div class="col-xs-12">
-								<h:inputText value="#{v.name}" class="form-control"></h:inputText>
-							</div>
-							
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-12 ">
-						<label class="control-label"><h:outputText value="Description" /></label>
-						<div class="row">
-							<div class="col-xs-12 ">
-								<h:inputTextarea value="#{v.description}" class="form-control"></h:inputTextarea>
-							</div>	
-						</div>	
-					</div>	
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText value="Age" /></label>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 ">
-								<h:inputText value="#{v.age_min}" class="form-control"></h:inputText>
-							</div>
-							<div class="col-xs-6 col-sm-6 ">
-								<h:inputText value="#{v.age_max}" class="form-control"></h:inputText>
-							</div>	
-						</div>
-					</div>
-		
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText
-								value="Years of experience" /></label>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 ">
-								<h:inputText value="#{v.experience_min}"
-									class="form-control"></h:inputText>
-							</div> 
-						</div>
-					</div>
-		
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText value="Education" /></label>
-						<h:inputText value="#{v.education}" class="form-control"></h:inputText>
-					</div>
-		
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText value="Area" /></label>
-						<h:inputText value="#{v.area}" class="form-control"></h:inputText>
-					</div>
-		
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText value="Languages" /></label>
-						<h:inputText value="#{v.languages}" class="form-control"></h:inputText>
-					</div>
-		
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText value="Place" /></label>
-						<h:inputText value="#{v.place}" class="form-control"></h:inputText>
-					</div>
-		
-					<div class="col-xs-12 col-sm-6 ">
-						<label class="control-label"><h:outputText value="Salary" /></label>
-						<h:inputText value="#{v.salary}" class="form-control"></h:inputText>
-					</div>
-		 			 
-					<div class="col-xs-12 "> 
-						<h:commandLink action="#{v.addVacancy}" class="btn btn-default btn-primary btn-add-vacancy">
-							<span class="glyphicon glyphicon-add glyphicon-plus"></span>Add vacancy </h:commandLink>
-					</div>
-				</div>
-   
-			</h:form>
-		</ui:define>
-	</ui:composition>
+    <ui:composition template="/templates/commonLayout.xhtml">
+        <ui:define name="content">
+
+            <br/>
+            <h:form styleClass="add-vacancy">
+                <jstl:set var="v" value="#{vacancyBean}" scope="request"/>
+
+                <h1>Add vacancy</h1>
+                <div class="form-group row">
+                    <ui:include src="templates/vacancyDetail.xhtml">
+                        <ui:param name="v" value="#{v}"/>
+                    </ui:include>
+                    <div class="col-xs-12 ">
+                        <h:commandLink action="#{v.addVacancy}" class="btn btn-default btn-primary btn-add-vacancy">
+                            <span class="glyphicon glyphicon-add glyphicon-plus"></span>Add vacancy </h:commandLink>
+                        <h:commandButton action="#{v.addVacancy}" style="display: none"></h:commandButton>
+                    </div>
+                </div>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:jstl="http://java.sun.com/jsp/jstl/core">
+
+        <div class="col-xs-12 col-sm-12 ">
+            <label class="control-label"><h:outputText value="Name"/></label>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h:inputText value="#{v.name}" class="form-control"></h:inputText>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 ">
+            <label class="control-label"><h:outputText value="Description"/></label>
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <h:inputTextarea value="#{v.description}" class="form-control"></h:inputTextarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText value="Age"/></label>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 ">
+                    <h:inputText value="#{v.age_min}" class="form-control"></h:inputText>
+                </div>
+                <div class="col-xs-6 col-sm-6 ">
+                    <h:inputText value="#{v.age_max}" class="form-control"></h:inputText>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText
+                    value="Years of experience"/></label>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 ">
+                    <h:inputText value="#{v.experience_min}"
+                                 class="form-control"></h:inputText>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText value="Education"/></label>
+            <h:inputText value="#{v.education}" class="form-control"></h:inputText>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText value="Area"/></label>
+            <h:inputText value="#{v.area}" class="form-control"></h:inputText>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText value="Languages"/></label>
+            <h:inputText value="#{v.languages}" class="form-control"></h:inputText>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText value="Place"/></label>
+            <h:inputText value="#{v.place}" class="form-control"></h:inputText>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 ">
+            <label class="control-label"><h:outputText value="Salary"/></label>
+            <h:inputText value="#{v.salary}" class="form-control"></h:inputText>
+        </div>
+
+</ui:composition>

@@ -12,6 +12,7 @@
 		<ui:define name="content">
 			<h:panelGroup id="main-container">
 				<h1>Favorites</h1>
+
 				<jstl:set var="fav" value="#{vacancyBean.favorites}" scope="request" />
 
 				<ui:fragment rendered="#{ empty fav}">You have no favorite vacancies yet...</ui:fragment>
