@@ -11,7 +11,7 @@ public class DataConnect {
             Connection con;
             try {
                 con = DriverManager.getConnection(
-                        "jdbc:mysql://127.3.18.2:3306/employme?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull",
+                        "jdbc:mysql://employme-barsoftcz.rhcloud.com/employme?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull",
                         "admingGMrHPx", "3ll8HlJYyQM4");
             } catch (Exception ex) {
                 con = DriverManager.getConnection(
